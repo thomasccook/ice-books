@@ -4,7 +4,7 @@ import {Stock} from './stock';
 @Component({
     selector: 'order-processor',
     template: `{{message}}`,
-    styles:[`:host {background: cyan;}`]
+    styles:[`:host {background: salmon;}`]
 })
 export class OrderComponent {
 
