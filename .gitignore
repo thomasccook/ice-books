@@ -1,0 +1,10 @@
+
+#STS generated projects
+
+.metadata/
+RemoteSystemsTempFiles/
+Servers/
+
+
+#client
+node_modules/

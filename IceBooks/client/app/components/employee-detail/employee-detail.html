@@ -1,0 +1,16 @@
+<h3>{{ employee.firstName }} {{ employee.lastName }}</h3>
+
+
+<img src="app/images/{{ employee.headshot }}" alt="View" style="width:300px;border:2;">
+
+
+
+<div class="thumbnail">
+
+    <div>
+        <h4>First Name : {{ employee.firstName }}</h4>
+        <h4>Last Name : {{ employee.lastName }}</h4>
+        <h4>Start Date : {{ employee.startDate | date:'medium' }}</h4>
+        <h4>End Date : {{ employee.endDate | date:'medium' }}</h4>
+    </div>
+</div>

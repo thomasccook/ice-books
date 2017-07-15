@@ -1,0 +1,93 @@
+<H3>Employees</H3>
+
+<div class="col-md-9">
+
+	<div class="row">
+
+		<!--  <form name="searchForm" role="form"> -->
+		  <div class="form-group">
+		  	<div class="col-md-3">
+		    	<input type="text" id="productTitle"
+		           placeholder="ID" class="form-control">
+			</div>
+		
+		  	<div class="col-md-3">
+		    	<input type="text" id="productTitle"
+		           placeholder="First Name" class="form-control">
+			</div>
+		
+		  	<div class="col-md-3">
+		    	<input type="text" id="productTitle"
+		           placeholder="Last Name" class="form-control" [formControl]="titleFilter">
+			</div>
+		
+		  	<div class="col-md-3">
+		    	<input type="text" id="productTitle"
+		           placeholder="Start Date" class="form-control">
+			</div>		
+
+		  	<div class="col-md-3">
+		    	<input type="text" id="productTitle"
+		           placeholder="End Date" class="form-control">
+			</div>	
+		
+			<div class="col-md-3">
+			    <button type="submit" class="btn btn-primary btn-block">Search</button>
+			</div>
+		  </div>
+		  <!-- </form> -->
+	</div>
+	
+	<p></p>
+
+	<div class="row">
+		<table border="1" width="100%">
+			<tr>
+				<th>ID</th>
+			    <th>First Name</th>
+			    <th>Last Name</th>
+			    <th>Start Date</th>
+			    <th>End Date</th>
+			    <th></th>
+			    <th></th>
+			    <th></th>
+			    <th></th>
+			</tr>
+		  	<tbody>
+		    <tr *ngFor="let item of employees | filter:'lastName':filterCriteria ; let i = index" (click)="setClickedRow(i)" [class.active]="selectedRow == i">
+		        <td>{{item.id}}</td>
+		        <td>{{item.firstName}}</td>
+		        <td>{{item.lastName}}</td>
+		        <td>{{item.startDate | date:'medium' }}</td>
+		        <td>{{item.endDate  | date:'medium'}}</td>
+		        <td align="center">
+		        	<a align="center" (click)="onLoadEmployee(item.id)">
+  						<img src="app/images/view_quick.png" alt="View" style="width:24px;height:24px;border:0;">
+					</a>
+				</td>
+				<td align="center" (click)="onLoadEmployee(item.id)" [routerLink]="['employeeDetail', item.id]">
+		        	<a href="default.asp">
+  						<img src="app/images/view.png" alt="View" style="width:24px;height:24px;border:0;">
+					</a>
+				</td>
+				<td align="center">
+		        	<a>
+  						<img src="app/images/edit.jpeg" alt="View" style="width:24px;height:24px;border:0;">
+					</a>
+				</td>
+				<td align="center">
+		        	<a >
+  						<img src="app/images/delete.jpeg" alt="View" style="width:24px;height:24px;border:0;">
+					</a>
+				</td>				
+		    </tr>
+		    </tbody>
+		</table>
+	</div>
+	
+</div>
+
+<div class="col-md-3">
+	<H3>{{employee.firstName}} {{employee.lastName}}</H3>
+	<img src="app/images/{{ employee.headshot }}" alt="View" style="width:200px;border:2;">
+</div>
