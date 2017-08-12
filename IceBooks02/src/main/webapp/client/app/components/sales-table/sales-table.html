@@ -1,0 +1,20 @@
+ <table>
+	<tr>
+		<th>Ice Cream</th>
+			<th>Price</th>
+			<th>Qty</th> 
+			<th>Total</th>  
+	</tr>
+	<tr *ngFor="let item of iceCreamList" >
+		<td><input type="text" [value]="item.name" class="leftAlign"/></td>
+		<td><input id="{{'price' + item.id}}" type="text" [value]="item.price | currency:'USD':true" class="rightAlign"/></td> 
+		<td><input id="{{'quantity' + item.id}}" type="text" [value]="item.quantity" (change)="onInputEvent($event)" class="rightAlign"/></td>
+		<td><input id="{{'total' + item.id}}" type="text" [value]="item.total | currency:'USD':true" class="rightAlign"/></td> 
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td><input type="text" [value]="grandTotal | currency:'USD':true" class="rightAlign"/></td>  
+	</tr>
+</table>
