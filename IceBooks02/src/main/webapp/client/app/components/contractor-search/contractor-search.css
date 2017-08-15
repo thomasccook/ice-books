@@ -1,3 +1,4 @@
+
 .active {
   background-color:lightblue;
 }
@@ -10,6 +11,7 @@
 
 .empty_cell{
 	border: none;
+	background-color:red;	
 }
 
 .icon_cell {

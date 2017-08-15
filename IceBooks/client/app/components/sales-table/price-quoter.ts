@@ -6,7 +6,7 @@ import {Stock} from './stock';
     template: `<strong><input type="button" value="Buy" (click)="buyStocks($event)">
                {{stockSymbol}} {{lastPrice | currency:'USD':true:'1.2-2'}}</strong>
               `,
-    styles:[`:host {background: pink; padding: 5px 15px 15px 15px;}`]
+    styles:[`:host {background: orange; padding: 5px 15px 15px 15px;}`]
 })
 export class PriceQuoterComponent {
     @Output() buy: EventEmitter <Stock> = new EventEmitter();
