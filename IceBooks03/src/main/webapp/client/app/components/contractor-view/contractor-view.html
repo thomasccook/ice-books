@@ -1,0 +1,76 @@
+<div class="col-md-8">
+
+		<div class="block">
+			<label>Id:</label> 
+			<span >{{contractor.id}}</span>
+		</div>
+
+		<div class="block">
+			<label>First Name:</label> 
+			<span >{{contractor.firstName}}</span>
+		</div>
+
+		<div class="block">
+			<label>Last Name:</label> 
+			<span >{{contractor.lastName}}</span>
+		</div>
+
+		<div class="block">
+			<label>Phone:</label> 
+			<span >{{contractor.phone}}</span>
+		</div>
+
+		<div class="block">
+			<label>Birthday:</label> 
+			<span >{{contractor.birthday | date:'MMM dd, yyyy'}}</span>
+		</div>
+
+		<div class="block">
+			<label>Active:</label> 
+			<span >{{contractor.active}}</span>
+		</div>
+
+		<div class="block">
+			<label>SSN:</label> 
+			<span >{{contractor.ssn}}</span>
+		</div>
+
+		<div class="block">
+			<table>
+				<tr>
+					<td>
+						<label>Emails:</label>
+					</td>
+					<td>
+						<ul>
+						    <li *ngFor="let email of contractor.emailList">
+						      {{email.email}}
+						    </li>
+						</ul>					
+					</td>
+				</tr>
+			</table>
+		
+			
+
+		</div>
+	
+</div>	
+	
+<div class="col-md-4">
+	<div class="row">
+		<img style="width:250px;" src="app/images/{{contractor.headshot}}" />
+	</div>
+	
+	<div class="row" style="height:10px;">
+		
+	</div>
+	
+	<div style="display:block-inline;">
+		<button [routerLink]="['/contractorEdit', contractor.id]" >Edit</button>
+		<button [routerLink]="['/contractorSearch']">Return to Search</button>
+	</div>
+
+</div>
+
+

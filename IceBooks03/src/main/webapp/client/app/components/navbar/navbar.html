@@ -1,0 +1,32 @@
+<div>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" [routerLink]="['/']">IceBooks : Dad's Ice Cream</a> <!-- [routerLink] here is a workaround: rc.1 router requires a link to base url -->
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li><a [routerLink]="['/employeeSearch']">Employees</a></li>
+        <li><a [routerLink]="['/contractorSearch']">Contractors</a></li>
+        <li><a [routerLink]="['/productSearch']">Products</a></li>
+        <li><a [routerLink]="['/truckSearch']">Trucks</a></li>
+        <li><a [routerLink]="['/salesTable']">Sales</a></li>
+        <li><a [routerLink]="['/about']">About</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+
+</div>

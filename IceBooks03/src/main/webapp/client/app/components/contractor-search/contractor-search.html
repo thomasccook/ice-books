@@ -1,0 +1,162 @@
+<H4>Contractor Search</H4>
+
+<div class="col-md-10">
+
+	<div class="row">
+
+	  	<div class="col-md-3">
+	  		<label >First Name</label>
+	    	<input type="text" class="form-control" [(ngModel)] = "global.contractorFilter.firstName">
+		</div>
+	
+	  	<div class="col-md-3">
+			<label >Last Name</label>
+	    	<input type="text" class="form-control" [(ngModel)] = "global.contractorFilter.lastName">
+		</div>
+	
+	  	<div class="col-md-3">
+	  		<label >Birthday Start</label>
+	    	<input type="date" class="form-control" [(ngModel)] = "global.contractorFilter.birthdayStart" >
+		</div>		
+
+	  	<div class="col-md-3">
+			<label >Birthday End</label>
+	    	<input type="date" class="form-control" [(ngModel)] = "global.contractorFilter.birthdayEnd">
+		</div>	
+
+	  	<div class="col-md-3">
+			<label >Active</label>
+	    	<select class="form-control" [(ngModel)] = "global.contractorFilter.active">
+	    		<option></option>
+	    		<option>true</option>
+	    		<option>false</option>
+	    	</select>
+		</div>	
+
+	  	<div class="col-md-3">
+			<label >SSN</label>
+	    	<input type="text" class="form-control" [(ngModel)] = "global.contractorFilter.ssn">
+		</div>			
+
+		<div class="col-md-3">
+			<label >&nbsp;</label>
+		    <button type="submit" class="btn btn-primary btn-block" (click)=search()>Search</button>
+		</div>
+
+	</div>
+
+	<p></p>
+
+	<div class="row">
+		<table border="1" width="100%">
+			<tr>
+				<td align="center"><span class="underlined" (click)="showRowsPerPagePopup(rowsPerPageModal)" >Page</span></td>
+				<th>Rec</th>
+				<!--  
+				<th><span class="underlined" (click)="sort('id', $event)">ID</span></th>
+				-->
+			    <th><a href="" (click)="sort('firstName', $event)">First Name</a></th>
+			    <th><a href="" (click)="sort('lastName', $event)">Last Name</a></th>
+			    <th><a href="" (click)="sort('birthday', $event)">Birthday</a></th>
+			    <th><a href="" (click)="sort('active', $event)">Active</a></th>
+			    <th colspan="1" style="text-align:center;">
+			    	<img src="app/images/add-icon.ico" (click)="addRecord()" class="icon_prop">
+			    </th>
+			</tr>
+		  	<tbody>
+		    <tr *ngFor="let item of contractorQueryResult.list ; let i = index;" >
+				<td align="center" [class]="cellClass(i)">
+					<div *ngIf="i === 0"><span (click)="goToPage('first', $event)" class="glyphicon glyphicon-step-backward" style="transform: rotate(90deg)"></span></div>
+					<div *ngIf="i === 1"><span (click)="goToPage('prev', $event)" class="glyphicon glyphicon-play" style="transform: rotate(-90deg)"></span></div>
+					<div *ngIf="i === 2"><span (click)="showGoToPagePopup(goToPageModal)" class="hand">{{contractorQueryResult.currentPage}}/{{contractorQueryResult.totalPageCount}}</span></div>
+					<div *ngIf="i === 3"><span (click)="goToPage('next', $event)" class="glyphicon glyphicon-play" style="transform: rotate(90deg)"></span></div>
+					<div *ngIf="i === 4"><span (click)="goToPage('last', $event)" class="glyphicon glyphicon-step-forward" style="transform: rotate(90deg)"></span></div>
+					<div *ngIf="i === contractorQueryResult.recordsPerPage-2">Recs:</div>
+					<div *ngIf="i === contractorQueryResult.recordsPerPage-1">{{contractorQueryResult.totalRecordCount}}</div>
+				</td>			    
+		        <td (click)="rowClicked(i,item.id)" [class.active]="global.selectedContractorId === item.id">{{item.recordNumber}}</td>
+		        <!--  
+		        <td (click)="rowClicked(i,item.id)" [class.active]="global.selectedContractorId === item.id">{{item.id}}</td>
+		        -->
+		        <td (click)="rowClicked(i,item.id)" [class.active]="global.selectedContractorId === item.id">{{item.firstName}}</td>
+		        <td (click)="rowClicked(i,item.id)" [class.active]="global.selectedContractorId === item.id">{{item.lastName}}</td>
+		        <td (click)="rowClicked(i,item.id)" [class.active]="global.selectedContractorId === item.id">{{item.birthday | date:'MMM dd, yyyy'}}</td>
+		        <td (click)="rowClicked(i,item.id)" [class.active]="global.selectedContractorId === item.id">{{item.active }}</td>
+				<td *ngIf="item.id" align="center" (click)="rowClickedView(i,item.id)" [routerLink]="['/contractorView', item.id]" class="icon_cell" >
+		        	<a href="" title="View Record">
+  						<img src="app/images/view.png" class="icon_prop">
+					</a>
+				</td>
+				<td *ngIf="!item.id">&nbsp;</td>		
+		       </tr>
+		    </tbody>
+		</table>
+
+	</div>
+	
+</div>
+
+<div id="photo_box" class="col-md-2" *ngIf="contractor != null" >
+	<div id="">
+		<img id="photo" src="app/images/{{ contractor.headshot }}" alt="View" >	
+	</div>
+	<div style="display:inline-block; float:left;">
+		<span class="glyphicon glyphicon-user" ></span>
+		<span>{{contractor.firstName}} {{contractor.lastName}}</span>
+	</div>
+	<br/>
+	<div style="display:inline-block; float:left;">
+		<span class="glyphicon glyphicon-phone" ></span>
+		<span>{{contractor.phone}}</span>
+	</div>
+	
+
+</div>
+
+<!-------------------------------------------------------------------------->
+<!-- Modals-->
+<div class="row">
+    <modal #rowsPerPageModal modalClass="modal-sm">
+        <modal-header>
+            <H4>Rows per Page</H4>
+        </modal-header>
+        <modal-content>
+        	<div class="popup_fields">
+			    <label for="rowsPerPage">Rows Per Page:</label>
+				<select [(ngModel)]="global.contractorFilter.recordsPerPage">
+					<option>10</option>
+					<option>15</option>
+					<option>20</option>
+					<option>25</option>
+					<option>30</option>
+					<option>40</option>
+					<option>50</option>
+				</select>
+        	</div>
+        </modal-content>
+        <modal-footer>
+            <button class="btn btn-primary" (click)="hideRowsPerPagePopup(rowsPerPageModal);">OK</button>
+        </modal-footer>
+    </modal>
+</div>
+ 
+ <div class="row">
+    <modal #goToPageModal modalClass="modal-sm">
+        <modal-header>
+            <H4>Go to Page</H4>
+        </modal-header>
+        <modal-content>
+        	<div class="popup_fields">
+			    <label for="goToPage">Go To Page:</label>
+			    <input type="text" id="lastname" [(ngModel)]="global.contractorFilter.currentPage">
+        	</div>
+        </modal-content>
+        <modal-footer>
+            <button class="btn btn-primary" (click)="hideGoToPagePopup(goToPageModal);">OK</button>
+        </modal-footer>
+    </modal>
+</div>
+ 
+
+
+

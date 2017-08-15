@@ -1,0 +1,82 @@
+.active {
+  background-color:lightblue;
+}
+
+.icon_prop {
+	width:24px;
+	height:24px;
+	border:0;
+}
+
+.empty_cell{
+	border: none;
+}
+
+.icon_cell {
+	width: 26px;
+}
+
+
+.underlined {
+	 font-weight: bold;
+	 text-decoration: underline;
+	 cursor:pointer;
+}
+
+.hand {
+	 cursor:pointer;
+}
+
+#popup_fields {
+    display: table-cell;
+    vertical-align: middle;
+    height: 50px;
+}
+
+#photo_box {
+	background-color:white;
+	margin: 0px;
+	border-style: solid;
+	border-width: 0px;
+	
+}
+
+#photo {
+	align:center;
+	width:150px;
+	border:2;	
+}
+
+
+
+
+
+/*
+
+#popup_fields  label {
+    display: inline-block;
+    vertical-align: baseline;
+    width: 125px;
+    background-color: white;
+}
+
+#popup_fields  input {
+    display: inline-block;
+    vertical-align: baseline;
+    width: 125px;
+    background-color: white;
+}
+
+#popup_fields label {
+    color: #2D2D2D;
+    font-size: 15px;
+}
+
+
+#popup_fields form, input {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+*/
